@@ -1,18 +1,50 @@
 <!DOCTYPE html>
-<html>
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <title>내 마인크래프트 서버</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grim 약탈 서버</title>
     <style>
-        body { background-color: #1a1a1a; color: white; text-align: center; font-family: sans-serif; padding: 50px; }
-        .ip { background: #333; padding: 10px; border-radius: 5px; font-weight: bold; color: #00ff00; }
+        body { background-color: #121212; color: #eee; font-family: 'Noto Sans KR', sans-serif; text-align: center; margin: 0; padding: 100px 20px; }
+        .container { max-width: 600px; margin: auto; background: #1e1e1e; padding: 40px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        h1 { color: #ff4757; font-size: 3rem; margin-bottom: 10px; }
+        .ip-box { background: #2f3542; padding: 15px; border-radius: 10px; font-size: 1.2rem; cursor: pointer; border: 2px dashed #ff4757; transition: 0.3s; }
+        .ip-box:hover { background: #3e4451; }
+        .status { margin-top: 20px; font-weight: bold; color: #2ed573; }
+        .btn { display: inline-block; margin-top: 30px; padding: 10px 25px; background: #5865F2; color: white; text-decoration: none; border-radius: 5px; font-weight: bold; }
     </style>
 </head>
 <body>
-    <h1>🎮 우리들의 약탈 서버 🎮</h1>
-    <p>지금 접속해서 최고의 자리를 차지하세요!</p>
-    <p>서버 주소: <span class="ip">여기에_오라클_아이피_입력</span></p>
-    <br>
-    <a href="디스코드_링크" style="color: cyan;">디스코드 참여하기</a>
+    <div class="container">
+        <h1>Grim Server</h1>
+        <p>자유로운 약탈과 성장의 재미, 지금 시작하세요!</p>
+        <div class="ip-box" onclick="copyIP()">클릭해서 IP 복사: 여기에_아이피_입력</div>
+        <p id="status-text" class="status">서버 상태 확인 중...</p>
+        <a href="여기에_디스코드_링크" class="btn">공식 디스코드 입장</a>
+    </div>
+
+    <script>
+        function copyIP() {
+            const ip = "여기에_아이피_입력";
+            navigator.clipboard.writeText(ip);
+            alert("서버 주소가 복사되었습니다!");
+        }
+        
+        // 실시간 서버 상태 가져오기 (무료 API 사용)
+        async function fetchStatus() {
+            try {
+                const response = await fetch('https://api.mcstatus.io/v2/status/java/여기에_아이피_입력');
+                const data = await response.json();
+                const text = document.getElementById('status-text');
+                if (data.online) {
+                    text.innerText = `현재 서버 온라인! (${data.players.online}/${data.players.max}명 접속 중)`;
+                } else {
+                    text.innerText = "현재 서버 오프라인";
+                    text.style.color = "#ff4757";
+                }
+            } catch (e) { console.log("API 오류"); }
+        }
+        fetchStatus();
+    </script>
 </body>
 </html>
