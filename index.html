@@ -3,67 +3,109 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Grims 약탈 서버</title>
+    <title>Grims Server - Old Server</title>
     <style>
-        body { background-color: #121212; color: #eee; font-family: 'Noto Sans KR', sans-serif; text-align: center; margin: 0; padding: 100px 20px; }
-        .container { max-width: 600px; margin: auto; background: #1e1e1e; padding: 40px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); border: 1px solid #333; }
-        h1 { color: #00d4ff; font-size: 3rem; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 2px; }
-        .ip-box { background: #2f3542; padding: 20px; border-radius: 12px; font-size: 1.4rem; cursor: pointer; border: 2px dashed #00d4ff; transition: 0.3s; margin-top: 30px; }
-        .ip-box:hover { background: #3e4451; transform: scale(1.02); }
-        .copy-hint { font-size: 0.9rem; color: #888; margin-top: 8px; }
-        .status { margin-top: 25px; font-weight: bold; color: #2ed573; font-size: 1.1rem; }
-        .btn-group { margin-top: 30px; }
-        .btn { display: inline-block; padding: 12px 30px; background: #5865F2; color: white; text-decoration: none; border-radius: 8px; font-weight: bold; transition: 0.3s; }
-        .btn:hover { background: #4752c4; }
+        /* 기본 배경 및 폰트 설정 */
+        body { background-color: #222; color: #fff; font-family: Arial, sans-serif; margin: 0; padding: 0; }
+        
+        /* 상단 로고 영역 */
+        header { background: #1a1a1a; padding: 40px 0; text-align: center; }
+        .logo { font-size: 3.5rem; font-weight: bold; color: #fff; text-shadow: 2px 2px 5px rgba(0,0,0,0.7); letter-spacing: -2px; }
+        .logo span { color: #f39c12; } /* 로고 포인트 컬러 */
+
+        /* 네비게이션 메뉴 바 */
+        nav { background: #333; display: flex; justify-content: center; padding: 0; overflow-x: auto; }
+        nav a { color: #fff; text-decoration: none; padding: 20px 25px; font-weight: bold; font-size: 0.9rem; transition: 0.3s; }
+        nav a:hover { background: #444; }
+        nav a.active { background: #fff; color: #222; } /* 현재 페이지 표시 */
+        .shop-btn { background: #5dade2; color: #fff !important; }
+
+        /* 메인 콘텐츠 레이아웃 (이미지 6번 스타일) */
+        .main-content { max-width: 1100px; margin: 40px auto; display: flex; gap: 20px; padding: 0 20px; }
+        
+        /* 왼쪽 이미지 슬라이드 구역 */
+        .image-section { flex: 2; position: relative; border-radius: 5px; overflow: hidden; }
+        .image-section img { width: 100%; height: auto; display: block; filter: brightness(0.8); }
+        .label { position: absolute; top: 15px; left: 15px; background: #27ae60; padding: 5px 12px; font-size: 0.8rem; border-radius: 3px; }
+
+        /* 오른쪽 서버 설명 구역 */
+        .info-section { flex: 1; background: #2c2c2c; padding: 30px; border-radius: 5px; text-align: center; }
+        .info-section h2 { color: #2ecc71; font-size: 1.2rem; margin-bottom: 5px; }
+        .info-section .subtitle { color: #aaa; font-size: 1rem; margin-bottom: 20px; }
+        .info-section p { color: #bbb; line-height: 1.6; font-size: 0.95rem; margin-bottom: 30px; }
+        
+        /* 플레이 인원 표시 */
+        .player-count { font-size: 1.5rem; font-weight: bold; color: #fff; border-top: 1px solid #444; padding-top: 20px; }
+        .player-count span { color: #2ecc71; }
+
+        /* 서버 주소 버튼 */
+        .copy-ip { display: block; margin-top: 20px; padding: 15px; background: #27ae60; color: #fff; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; width: 100%; transition: 0.3s; }
+        .copy-ip:hover { background: #219150; }
+
+        /* 모바일 대응 */
+        @media (max-width: 850px) {
+            .main-content { flex-direction: column; }
+            .logo { font-size: 2.5rem; }
+        }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Grims Server</h1>
-        <p>최고의 약탈과 짜릿한 전투가 기다립니다.</p>
-        
-        <div class="ip-box" onclick="copyIP()">
-            grims.kro.kr
-            <div class="copy-hint">(클릭하여 주소 복사)</div>
+
+    <header>
+        <div class="logo">GRIMS<span>SERVER</span></div>
+    </header>
+
+    <nav>
+        <a href="#" class="active">Home</a>
+        <a href="#">Rules</a>
+        <a href="#">Map</a>
+        <a href="#">Commands</a>
+        <a href="#">About</a>
+        <a href="https://discord.gg/본인디스코드" class="shop-btn">Discord</a>
+    </nav>
+
+    <div class="main-content">
+        <div class="image-section">
+            <div class="label">Nether Highway</div>
+            <img src="https://www.2b2t.org/images/overworld.jpg" alt="Server Screenshot">
         </div>
 
-        <p id="status-text" class="status">서버 정보를 불러오는 중...</p>
+        <div class="info-section">
+            <h2>Grims Anarchy</h2>
+            <div class="subtitle">old server</div>
+            <p>
+                Grims is a minecraft survival server with a world that never resets. 
+                Full PvP enabled in a free for all no rules environment.
+            </p>
+            
+            <div class="player-count">
+                <span id="p-count">000</span> Playing Now
+            </div>
 
-        <div class="btn-group">
-            <a href="https://discord.gg/8McnUtDGmQ" class="btn" target="_blank">공식 디스코드 입장</a>
+            <button class="copy-ip" onclick="copyIP()">PLAY ON GRIMS.KRO.KR</button>
         </div>
     </div>
 
     <script>
-        // 주소 복사 함수
+        // IP 복사 기능
         function copyIP() {
-            const domain = "grims.kro.kr";
-            navigator.clipboard.writeText(domain).then(() => {
-                alert("서버 주소(grims.kro.kr)가 복사되었습니다! 마크에서 추가해주세요.");
-            });
+            const ip = "grims.kro.kr";
+            navigator.clipboard.writeText(ip);
+            alert("Server IP Copied: " + ip);
         }
-        
-        // 실시간 서버 상태 가져오기 (공용 IP로 확인)
-        async function fetchStatus() {
+
+        // 실시간 인원수 가져오기
+        async function updateStatus() {
             try {
-                // 도메인이 연결되어 있다면 도메인 주소로 조회해도 됩니다.
                 const response = await fetch('https://api.mcstatus.io/v2/status/java/grims.kro.kr');
                 const data = await response.json();
-                const text = document.getElementById('status-text');
-                
                 if (data.online) {
-                    text.innerHTML = `● 온라인: <span style="color:#2ed573">${data.players.online}명 접속 중</span>`;
-                } else {
-                    text.innerHTML = `○ 서버 점검 중 또는 오프라인`;
-                    text.style.color = "#ff4757";
+                    document.getElementById('p-count').innerText = data.players.online;
                 }
-            } catch (e) {
-                document.getElementById('status-text').innerText = "상태 정보를 가져올 수 없습니다.";
-            }
+            } catch (e) { console.log("Status Error"); }
         }
-        fetchStatus();
-        // 1분마다 자동 새로고침
-        setInterval(fetchStatus, 60000);
+        updateStatus();
+        setInterval(updateStatus, 60000); // 1분마다 갱신
     </script>
 </body>
 </html>
