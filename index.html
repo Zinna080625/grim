@@ -17,9 +17,22 @@
         nav a { color: #bbb; text-decoration: none; padding: 0 25px; font-weight: bold; font-size: 1rem; height: 100%; display: flex; align-items: center; transition: 0.2s; }
         nav a:hover { background-color: #444; color: white; }
         nav a.active { background-color: #fff; color: #222; }
-        .shop-btn { background-color: #5dade2; color: white !important; margin-left: 20px; height: 60px; padding: 0 35px; }
-        .shop-btn:hover { background-color: #3498db; }
+        /* Shop 버튼을 파란색으로 만드는 코드 */
+.shop-btn { 
+    background-color: #5dade2 !important; /* 배경 하늘색 */
+    color: white !important;           /* 글자 흰색 */
+    margin-left: 20px;                 /* 왼쪽 여백 */
+    height: 60px;                      /* 높이 고정 */
+    padding: 0 35px;                   /* 좌우 넓이 */
+    display: flex;                     /* 정렬 */
+    align-items: center;               /* 수직 가운데 정렬 */
+    text-decoration: none;             /* 밑줄 제거 */
+    font-weight: bold;                 /* 굵게 */
+}
 
+.shop-btn:hover { 
+    background-color: #3498db !important; /* 마우스 올리면 진해짐 */
+}
         /* 메인 컨테이너 */
         .container { max-width: 1200px; margin: 40px auto; display: flex; gap: 30px; padding: 0 20px; }
         
